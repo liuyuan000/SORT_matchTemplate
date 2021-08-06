@@ -35,7 +35,7 @@ def loc_max(kcf_result, threshold):
     g=cv2.getStructuringElement(cv2.MORPH_RECT,(5,5))
     #形态学处理,开运算
     img_open=cv2.morphologyEx(kcf_threshold,cv2.MORPH_OPEN,g)
-    _, contours, hierarchy = cv2.findContours(img_open, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+    contours, hierarchy = cv2.findContours(img_open, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
     for cnt in contours:
         bounding_boxes = cv2.boundingRect(cnt)
         cv2.rectangle(img_open, (bounding_boxes[0], bounding_boxes[1]), (bounding_boxes[0]+bounding_boxes[2], bounding_boxes[1]+bounding_boxes[3]),(255,0,0))
